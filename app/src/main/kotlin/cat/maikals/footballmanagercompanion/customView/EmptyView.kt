@@ -21,14 +21,18 @@ class EmptyView @JvmOverloads constructor(
     }
 
     init {
-        val ta =
-            context.obtainStyledAttributes(attrs, R.styleable.EmptyView, 0, 0)
-                .apply {
+        context.theme.obtainStyledAttributes(attrs, R.styleable.EmptyView, 0, 0)
+            .apply {
+                try {
                     val text = getText(R.styleable.EmptyView_text)
                     setEmptyText(text.toString())
                     val drawable = getInteger(R.styleable.EmptyView_src, 0)
                     setEmptyImage(drawable)
                 }
+                finally {
+                    recycle()
+                }
+            }
     }
 
     fun setEmptyImage(@DrawableRes drawableId: Int) =
