@@ -12,5 +12,5 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 }
 
-sourceCompatibility = "8"
-targetCompatibility = "8"
+sourceCompatibility = java_version
+targetCompatibility = java_version

@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     signingConfigs {
@@ -14,11 +13,15 @@ android {
     buildToolsVersion buildToolsVersion
     defaultConfig {
         applicationId "cat.maikals.footballmanagercompanion"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "$app_version"
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName app_version
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
     }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -32,6 +35,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility java_version
+        targetCompatibility java_version
+    }
 }
 
 dependencies {
@@ -41,17 +48,23 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
     implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
     //Koin
     implementation "org.koin:koin-core:$koin_version"
     implementation "org.koin:koin-core-ext:$koin_version"
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-android-scope:$koin_version"
     implementation "org.koin:koin-android-viewmodel:$koin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     //Test
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
     //modules
     implementation project(':domain')
     implementation project(':data')
