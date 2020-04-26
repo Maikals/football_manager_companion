@@ -26,8 +26,8 @@ class EmptyView @JvmOverloads constructor(
                 try {
                     val text = getText(R.styleable.EmptyView_text)
                     setEmptyText(text.toString())
-                    val drawable = getInteger(R.styleable.EmptyView_src, 0)
-                    setEmptyImage(drawable)
+                    val drawable = getDrawable(R.styleable.EmptyView_src)
+                    setEmptyImage(drawable!!)
                 }
                 finally {
                     recycle()

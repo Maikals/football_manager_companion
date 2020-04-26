@@ -10,9 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main_activity.MainActivity"></activity>
+        <activity android:name="cat.maikals.footballmanagercompanion.ui.container_screen.ContainerActivity"></activity>
         <activity
-            android:name=".splash_screen.SplashActivity"
+            android:name="cat.maikals.footballmanagercompanion.ui.splash_screen.SplashActivity"
             android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
