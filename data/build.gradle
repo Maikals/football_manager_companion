@@ -13,6 +13,9 @@ android {
     compileSdkVersion compile_sdk_version
     buildToolsVersion buildToolsVersion
 
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 
     defaultConfig {
         minSdkVersion 21
@@ -47,4 +50,5 @@ dependencies {
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+    implementation project(':domain')
 }
